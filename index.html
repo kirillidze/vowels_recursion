@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		'use strict';
+		//создаём массив из русских гласных букв
+		let arrayOfVowelsLetters = ['а','е','ё','и','о','у','ы','э','ю','я'],
+		    userString = prompt('Введите строку'); //получаем строку от пользователя
+
+		//Рекурсивная функция для подсчета числа русских гласных букв в введенной строке
+		function getNumberOfLetters(string, arrayOfLetters) {
+		  let counter = 0;
+		  if(string.length === 1) {
+		    if (arrayOfLetters.indexOf(string) !== -1){
+		      counter++;
+		    }
+		    return counter;
+		  }
+		  return getNumberOfLetters(string.slice(0,string.length-1), arrayOfLetters)
+		       + getNumberOfLetters(string[string.length-1], arrayOfLetters);
+		}
+
+		console.log(getNumberOfLetters(userString, arrayOfVowelsLetters));
+	</script>
+
+</body>
+</html>
